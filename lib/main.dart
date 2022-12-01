@@ -11,9 +11,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'yApp',
       theme: ThemeData(
-          primaryColor: Colors.lightBlue,
+          primaryColor: Colors.white,
           primarySwatch: Colors.red,
-          scaffoldBackgroundColor: Colors.lightBlue,
+          scaffoldBackgroundColor: Colors.blue,
           appBarTheme: AppBarTheme(color: Colors.blue),
           textTheme: TextTheme(
               subtitle1: TextStyle(color: Colors.white),
