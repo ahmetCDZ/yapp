@@ -1,23 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:yapp/screens/home_page.dart';
+import 'package:yapp/tasks/myTasks.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(ChangeNotifierProvider<MyTasks>(
+      create: (context) => MyTasks(), child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Provider.of<MyTasks>(context, listen: false).loadTasks();
     return MaterialApp(
       title: 'yApp',
       theme: ThemeData(
-          primaryColor: Colors.white,
-          primarySwatch: Colors.red,
-          scaffoldBackgroundColor: Colors.blue,
-          appBarTheme: AppBarTheme(color: Colors.blue),
-          textTheme: TextTheme(
-              subtitle1: TextStyle(color: Colors.white),
-              headline3: TextStyle(color: Colors.white))),
+        primaryColor: Colors.blue,
+        primarySwatch: Colors.lightBlue,
+        scaffoldBackgroundColor: Colors.blue,
+        appBarTheme: AppBarTheme(color: Colors.blue),
+      ),
       home: HomePage(),
     );
   }
