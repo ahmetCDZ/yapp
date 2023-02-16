@@ -11,7 +11,6 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Provider.of<MyTasks>(context, listen: false).loadTasks();
     return MaterialApp(
       title: 'yApp',
       theme: ThemeData(

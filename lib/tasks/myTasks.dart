@@ -8,7 +8,7 @@ class MyTasks with ChangeNotifier {
 
   void addTasks(String newTask) {
     tasks.add(Tasks(title: newTask));
-    savedTasks(tasks);
+
     notifyListeners();
   }
 
@@ -24,14 +24,5 @@ class MyTasks with ChangeNotifier {
 
   Future<void> createPref() async {
     sharedPreferencesObject = await SharedPreferences.getInstance();
-  }
-
-  savedTasks(List<Tasks> value) {
-    sharedPreferencesObject.setStringList('tasks', value);
-  }
-
-  void loadTasks() async {
-    await createPref();
-    tasks = sharedPreferencesObject.getStringList('tasks');
   }
 }
