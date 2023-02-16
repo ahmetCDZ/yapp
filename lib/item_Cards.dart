@@ -15,7 +15,7 @@ class Cards extends StatelessWidget {
       child: Card(
           color: isDone ? Colors.blue.shade50 : Colors.white,
           elevation: isDone ? 1 : 5,
-          shadowColor: Colors.blueAccent,
+          shadowColor: Colors.blueGrey,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
           child: ListTile(

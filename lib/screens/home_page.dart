@@ -52,13 +52,15 @@ class HomePage extends StatelessWidget {
                     borderRadius: BorderRadius.only(
                         topRight: Radius.circular(30),
                         topLeft: Radius.circular(30))),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    textButtonWidget('yAPPılacaklar'),
-                    textButtonWidget('yAPPılanlar'),
-                  ],
+                child: Center(
+                  child: ListView(
+                    padding: EdgeInsets.only(left: 25),
+                    scrollDirection: Axis.horizontal,
+                    children: [
+                      textButtonWidget('yAPPılacaklar'),
+                      textButtonWidget('yAPPılanlar'),
+                    ],
+                  ),
                 ),
               ),
             ),
