@@ -13,24 +13,26 @@ class Cards extends StatelessWidget {
       onDismissed: deletedTasks,
       key: Key(title),
       child: Card(
-          color: isDone ? Colors.blue.shade50 : Colors.white,
-          elevation: isDone ? 1 : 5,
-          shadowColor: Colors.blueGrey,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-          child: ListTile(
-            title: Text(
-              title,
-              style: TextStyle(
-                  color: Colors.blue,
-                  decoration: isDone ? TextDecoration.lineThrough : null),
-            ),
-            trailing: Checkbox(
-              onChanged: markCheck,
-              value: isDone,
-              activeColor: Colors.black,
-            ),
-          )),
+        color: isDone ? Colors.blue.shade50 : Colors.white,
+        elevation: isDone ? 1 : 5,
+        shadowColor: Colors.blueGrey,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        child: title == ''
+            ? null
+            : ListTile(
+                title: Text(
+                  title,
+                  style: TextStyle(
+                      color: Colors.blue,
+                      decoration: isDone ? TextDecoration.lineThrough : null),
+                ),
+                trailing: Checkbox(
+                  onChanged: markCheck,
+                  value: isDone,
+                  activeColor: Colors.black,
+                ),
+              ),
+      ),
     );
   }
 }

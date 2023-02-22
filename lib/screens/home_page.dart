@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
       floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
       appBar: AppBar(
           title: Text(
-        'yAPP',
+        'yApp',
         style: TextStyle(color: Colors.white),
       )),
       body: Column(
@@ -32,7 +32,7 @@ class HomePage extends StatelessWidget {
                   child: myTextField = TextField(
                     controller: myController,
                     decoration: InputDecoration(
-                      labelText: ' Lütfe yAPPılacak planınızı giriniz',
+                      labelText: ' Lütfe yAppılacak planınızı giriniz',
                     ),
                     onChanged: (value) {
                       isEnterText = value;
@@ -57,8 +57,8 @@ class HomePage extends StatelessWidget {
                     padding: EdgeInsets.only(left: 25),
                     scrollDirection: Axis.horizontal,
                     children: [
-                      textButtonWidget('yAPPılacaklar'),
-                      textButtonWidget('yAPPılanlar'),
+                      textButtonWidget('yAppılacaklar'),
+                      textButtonWidget('yAppılanlar'),
                     ],
                   ),
                 ),
@@ -88,7 +88,14 @@ class HomePage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton.small(
         onPressed: (() {
-          Provider.of<MyTasks>(context, listen: false).addTasks(isEnterText);
+          if (isEnterText == '') {
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content: Text('Lütfen yAppılacak bir görev gir!!'),
+              duration: Duration(seconds: 2),
+              action: null,
+            ));
+          } else
+            Provider.of<MyTasks>(context, listen: false).addTasks(isEnterText);
           myController.clear();
         }),
         child: Icon(
@@ -128,9 +135,7 @@ class textButtonWidget extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
           textStyle: const TextStyle(fontSize: 20),
         ),
-        onPressed: () {
-          if (text == 'yAPPılacaklar') {}
-        },
+        onPressed: () {},
         child: Text(text));
   }
 }

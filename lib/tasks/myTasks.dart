@@ -39,6 +39,7 @@ class MyTasks with ChangeNotifier {
   void loadTasks() async {
     await createSP();
     firstTitle = pref.getString('key')!;
+    print(firstTitle);
   }
 
   void markCheck(int index) {
