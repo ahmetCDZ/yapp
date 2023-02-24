@@ -1,8 +1,19 @@
 class Tasks {
-  final String title;
+  String title;
   bool isDone;
 
-  Tasks({required this.title, this.isDone = false});
+  Tasks({this.title = '', this.isDone = false});
+
+  Map<String, dynamic> toMap() {
+    return {
+      'title': title,
+      'isDone': isDone,
+    };
+  }
+
+  Tasks.fromMap(Map map)
+      : title = map['title'],
+        isDone = map['isDone'];
 
   void markCheck() {
     isDone = !isDone;

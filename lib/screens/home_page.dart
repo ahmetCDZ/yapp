@@ -2,15 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:yapp/item_Cards.dart';
 import 'package:yapp/tasks/myTasks.dart';
+import 'package:yapp/tasks/tasks.dart';
 
 class HomePage extends StatelessWidget {
   String isEnterText = '';
-  bool isBool = true;
+  late bool isBool = true;
   var myTextField = TextField();
   final myController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    Provider.of<MyTasks>(context).loadSP();
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
       appBar: AppBar(
