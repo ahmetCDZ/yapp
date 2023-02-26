@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:yapp/item_Cards.dart';
 import 'package:yapp/tasks/myTasks.dart';
-import 'package:yapp/tasks/tasks.dart';
 
 class HomePage extends StatelessWidget {
   String isEnterText = '';
   late bool isBool = true;
-  var myTextField = TextField();
+  var myTextField = const TextField();
   final myController = TextEditingController();
 
   @override
@@ -16,7 +15,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
       appBar: AppBar(
-          title: Text(
+          title: const Text(
         'yApp',
         style: TextStyle(color: Colors.white),
       )),
@@ -28,12 +27,12 @@ class HomePage extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(30, 10, 30, 0),
                 child: Container(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.all(Radius.circular(10))),
                   child: myTextField = TextField(
                     controller: myController,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: ' Lütfe yAppılacak planınızı giriniz',
                     ),
                     onChanged: (value) {
@@ -49,19 +48,15 @@ class HomePage extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.fromLTRB(30, 20, 30, 0),
               child: Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
                         topRight: Radius.circular(30),
                         topLeft: Radius.circular(30))),
-                child: Center(
-                  child: ListView(
-                    padding: EdgeInsets.only(left: 25),
-                    scrollDirection: Axis.horizontal,
-                    children: [
-                      textButtonWidget('yAppılacaklar'),
-                      textButtonWidget('yAppılanlar'),
-                    ],
+                child: const Center(
+                  child: Text(
+                    'Görevler',
+                    style: TextStyle(color: Colors.lightBlue, fontSize: 22),
                   ),
                 ),
               ),
@@ -72,7 +67,7 @@ class HomePage extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(30, 0, 30, 100),
                 child: Container(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.only(
                           bottomRight: Radius.circular(30),
@@ -91,16 +86,17 @@ class HomePage extends StatelessWidget {
       floatingActionButton: FloatingActionButton.small(
         onPressed: (() {
           if (isEnterText == '') {
-            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
               content: Text('Lütfen yAppılacak bir görev gir!!'),
-              duration: Duration(seconds: 2),
+              duration: Duration(seconds: 3),
               action: null,
             ));
-          } else
+          } else {
             Provider.of<MyTasks>(context, listen: false).addTasks(isEnterText);
+          }
           myController.clear();
         }),
-        child: Icon(
+        child: const Icon(
           Icons.add,
           color: Colors.blue,
         ),
@@ -120,24 +116,5 @@ class HomePage extends StatelessWidget {
         Provider.of<MyTasks>(context, listen: false).deletedTask(index);
       },
     );
-  }
-}
-
-class textButtonWidget extends StatelessWidget {
-  final String text;
-
-  textButtonWidget(this.text);
-  @override
-  Widget build(BuildContext context) {
-    return TextButton(
-        style: TextButton.styleFrom(
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-          backgroundColor: Colors.transparent,
-          padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
-          textStyle: const TextStyle(fontSize: 20),
-        ),
-        onPressed: () {},
-        child: Text(text));
   }
 }
